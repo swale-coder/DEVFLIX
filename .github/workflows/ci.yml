@@ -22,11 +22,11 @@ jobs:
           node-version: 18
           cache: "npm"
 
-      # Step 3: Install dependencies safely
+      # Step 3: Install dependencies
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      # Step 4: Build React App
+      # Step 4: Build React app
       - name: Build React App
         run: npm run build
 
@@ -38,6 +38,6 @@ jobs:
       - name: Deploy to Azure
         uses: azure/webapps-deploy@v3
         with:
-          app-name: "<YOUR-AZURE-WEBAPP-NAME>"
+          app-name: "<YOUR-AZURE-WEBAPP-NAME>"  # Replace with your Azure app name
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ./build
