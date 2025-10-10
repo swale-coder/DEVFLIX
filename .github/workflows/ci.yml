@@ -30,8 +30,8 @@ jobs:
       - name: Build React App
         run: npm run build
 
-      # Step 5: Run Tests
-      - name: Run Jest Tests
+      # Step 5: Run Jest tests
+      - name: Run Tests
         run: npm test -- --watchAll=false --verbose
 
       # Step 6: Deploy to Azure Web App
