@@ -30,15 +30,11 @@ jobs:
       - name: Build React App
         run: npm run build
 
-      # Step 5: Install Babel Jest for JSX support
-      - name: Install Babel-Jest for testing
-        run: npm install --save-dev babel-jest @babel/preset-env @babel/preset-react
+      # Step 5: Run Tests
+      - name: Run Jest Tests
+        run: npm test -- --watchAll=false --verbose
 
-      # Step 6: Run Jest tests (with JSX support)
-      - name: Run Tests
-        run: npx jest src --watchAll=false --verbose --transform='^.+\\.jsx?$': 'babel-jest'
-
-      # Step 7: Deploy to Azure Web App
+      # Step 6: Deploy to Azure Web App
       - name: Deploy to Azure
         uses: azure/webapps-deploy@v3
         with:
