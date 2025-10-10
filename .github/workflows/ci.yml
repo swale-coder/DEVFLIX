@@ -20,17 +20,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: "npm"  # Caches npm modules automatically
+          cache: "npm"
 
       # Step 3: Install dependencies safely
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: npm install --legacy-peer-deps --no-audit
 
       # Step 4: Build React app
       - name: Build React App
         run: npm run build
 
-      # Step 5: Run tests
+      # Step 5: Run tests using data-testid
       - name: Run tests
         run: npm test -- --watchAll=false
 
@@ -38,6 +38,6 @@ jobs:
       - name: Deploy to Azure
         uses: azure/webapps-deploy@v3
         with:
-          app-name: "<YOUR-AZURE-WEBAPP-NAME>"
+          app-name: "devflix-react-app"   # Replace with your Azure Web App name
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ./build
