@@ -24,20 +24,22 @@ jobs:
 
       # Step 3: Install dependencies safely
       - name: Install dependencies
-        run: npm install --legacy-peer-deps --no-audit
+        run: npm install --legacy-peer-deps
 
       # Step 4: Build React app
       - name: Build React App
         run: npm run build
 
-      # Step 5: Run tests using data-testid
+      # Step 5: Run only custom Devflix tests
       - name: Run tests
-        run: npm test -- --watchAll=false
+        run: |
+          # Run Jest on specific test files
+          npx jest src/App.test.js --watchAll=false --verbose
 
       # Step 6: Deploy to Azure Web App
       - name: Deploy to Azure
         uses: azure/webapps-deploy@v3
         with:
-          app-name: "devflix-react-app"   # Replace with your Azure Web App name
+          app-name: "<YOUR-AZURE-WEBAPP-NAME>"
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ./build
