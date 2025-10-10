@@ -2,16 +2,16 @@ name: Devflix React CI/CD
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
   build-and-deploy:
     runs-on: windows-latest
 
     steps:
-      # Step 1: Checkout the repository
+      # Step 1: Checkout repository
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -26,17 +26,19 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      # Step 4: Build React app
+      # Step 4: Build React App
       - name: Build React App
         run: npm run build
 
-      # Step 5: Run only custom Devflix tests
-      - name: Run tests
-        run: |
-          # Run Jest on specific test files
-          npx jest src/App.test.js --watchAll=false --verbose
+      # Step 5: Install Babel Jest for JSX support
+      - name: Install Babel-Jest for testing
+        run: npm install --save-dev babel-jest @babel/preset-env @babel/preset-react
 
-      # Step 6: Deploy to Azure Web App
+      # Step 6: Run Jest tests (with JSX support)
+      - name: Run Tests
+        run: npx jest src --watchAll=false --verbose --transform='^.+\\.jsx?$': 'babel-jest'
+
+      # Step 7: Deploy to Azure Web App
       - name: Deploy to Azure
         uses: azure/webapps-deploy@v3
         with:
