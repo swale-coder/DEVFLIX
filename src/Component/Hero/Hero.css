@@ -1,0 +1,160 @@
+.hero {
+  position: relative;
+  background: url("https://images.unsplash.com/photo-1581092795363-24cbf26f55af");
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero-button {
+  margin-top: 20px;
+  padding: 14px 48px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  background-color: #e50914; /* Netflix red */
+  border: none;
+  border-radius: 4px; /* Netflix uses sharper corners compared to very rounded */
+  cursor: pointer;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.6),
+    0 0 15px rgba(229, 9, 20, 0.7);
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-family: 'Netflix Sans', Arial, sans-serif; 
+  user-select: none;
+}
+
+.hero-button:hover,
+.hero-button:focus {
+  background-color: #f40612;
+  box-shadow:
+    0 4px 8px rgba(0,0,0,0.8),
+    0 0 25px rgba(244, 6, 18, 0.9);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.hero-button:active {
+  transform: translateY(0);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.6),
+    0 0 10px rgba(229, 9, 20, 0.5);
+}
+
+
+.hero-button:hover {
+  background-color: #f40612;
+  transform: scale(1.05);
+}
+
+.hero-button:focus {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(229, 9, 20, 0.7), rgba(20, 20, 20, 0.7));
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  max-width: 600px;
+  padding: 0 20px;
+  z-index: 2;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  color: #e50914;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  margin-bottom: 0.5rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  margin-top: 10px;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+  line-height: 1.5;
+}
+
+.hero-content button {
+  margin-top: 20px;
+  padding: 14px 34px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background-color: #e50914;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(229, 9, 20, 0.6);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.hero-content button:hover {
+  background-color: #f40612;
+  transform: scale(1.05);
+}
+
+.hero-content button:focus {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+
+  .hero-content button {
+    padding: 12px 28px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .hero-content button {
+    padding: 10px 24px;
+    font-size: 0.9rem;
+  }
+}

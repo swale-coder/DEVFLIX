@@ -1,0 +1,138 @@
+:root {
+  --netflix-red: #e50914;
+  --card-bg: #111;
+}
+
+/* SECTION & TOP CURVE */
+.project-section {
+  position: relative;
+  background: radial-gradient(ellipse at top, #222 0% 60%, #000 100%);
+  padding-top: 12px;       /* Much less top padding */
+  padding-bottom: 4px;     /* Much less bottom padding */
+  min-height: 68px;        /* Smaller minimum height */
+  overflow-x: hidden;
+}
+
+.red-curved-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 26px;
+  background: var(--netflix-red);
+  border-bottom-left-radius: 50vw 24px;
+  border-bottom-right-radius: 50vw 24px;
+  z-index: 1;
+  box-shadow: 0 4px 8px rgba(229, 9, 20, 0.2);
+  pointer-events: none;
+  background-image: linear-gradient(120deg, rgba(255,255,255,0.07) 30%, var(--netflix-red) 70%);
+}
+
+/* CARD CAROUSEL GRID */
+.projects-grid {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 0 10px;
+  position: relative;
+  z-index: 2;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.projects-grid::-webkit-scrollbar { display: none; }
+
+/* NETFLIX CARD STYLING */
+.netflix-card {
+  position: relative;
+  width: 120px;
+  height: 64px;
+  margin: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--card-bg);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.32);
+  cursor: pointer;
+  flex: 0 0 auto;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: box-shadow 0.27s, transform 0.24s;
+  animation: fadeSlideUp 0.36s forwards cubic-bezier(.68,-0.35,.27,1.45);
+}
+
+@keyframes fadeSlideUp {
+  0% { opacity: 0; transform: translateY(18px);}
+  100% {opacity: 1; transform: translateY(0);}
+}
+
+.netflix-card:hover {
+  transform: scale(1.06) translateY(-2px);
+  z-index: 10;
+  box-shadow: 0 6px 20px var(--netflix-red), 0 2px 12px rgba(0,0,0,0.16);
+}
+
+/* CARD IMAGE */
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 5px;
+}
+
+/* HOVER OVERLAY */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.82) 68%, transparent 98%);
+  opacity: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 7px 10px;
+  transition: opacity 0.22s cubic-bezier(.77,.04,.6,1.43);
+  pointer-events: none;
+}
+.netflix-card:hover .card-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay-content {
+  color: #fff;
+  width: 100%;
+}
+.overlay-content h3 {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--netflix-red);
+  line-height: 1.1;
+  text-shadow: 1px 0 4px rgba(229,9,20,0.12);
+}
+.overlay-content p {
+  font-size: 0.47rem;
+  color: #eee;
+  margin: 2px 0 0 0;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.16);
+}
+
+/* RESPONSIVE CARDS & GRID */
+@media (max-width: 750px) {
+  .projects-grid { gap: 7px; }
+  .netflix-card { width: 86px; height: 40px; }
+  .overlay-content h3 { font-size: 0.48rem; }
+  .overlay-content p { font-size: 0.27rem; }
+}
+@media (max-width: 500px) {
+  .project-section { padding-top: 10px; min-height: 45px; }
+  .red-curved-container { height: 13px; }
+  .projects-grid { gap: 2px; padding: 0 2px; }
+  .netflix-card { width: 49px; height: 22px; }
+  .overlay-content h3 { font-size: 0.34rem; }
+  .overlay-content p { font-size: 0.17rem; }
+}
+@media (max-width: 350px) {
+  .netflix-card { width: 36px; height: 17px; }
+  .overlay-content h3 { font-size: 0.22rem; }
+  .overlay-content p { font-size: 0.1rem; }
+}

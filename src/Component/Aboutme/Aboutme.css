@@ -1,0 +1,122 @@
+.aboutme-container {
+  background-color: #141414;
+  color: #fff;
+  padding: 60px 50px;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hero Section */
+.aboutme-hero {
+  text-align: center;
+  margin-bottom: 50px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.aboutme-title {
+  font-size: 2.8rem;
+  color: #e50914;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.aboutme-subtitle {
+  font-size: 1.2rem;
+  color: #b3b3b3;
+  margin-top: 10px;
+}
+
+.highlight {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Section Styling */
+.aboutme-section {
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  color: #e50914;
+  margin-bottom: 20px;
+  border-left: 4px solid #e50914;
+  padding-left: 12px;
+  font-weight: 600;
+}
+
+.section-desc {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #ccc;
+  max-width: 900px;
+}
+
+/* Grid Layouts */
+.skills-grid, .hobby-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 25px;
+  margin-top: 25px;
+}
+
+/* Netflix-style Cards */
+.skill-card, .hobby-card {
+  background-color: #181818;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  border: 1px solid #222;
+}
+
+.skill-card:hover, .hobby-card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px rgba(229, 9, 20, 0.6);
+}
+
+.skill-card p {
+  font-size: 1rem;
+  color: #fff;
+}
+
+.hobby-card h3 {
+  color: #e50914;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.hobby-card p {
+  color: #b3b3b3;
+  font-size: 0.95rem;
+}
+
+/* Netflix glow animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .aboutme-container {
+    padding: 40px 25px;
+  }
+
+  .aboutme-title {
+    font-size: 2.2rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .skills-grid, .hobby-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+}

@@ -1,0 +1,105 @@
+/* Navbar.css */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #141414; /* Netflix dark background */
+  padding: 0 20px;
+  height: 60px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #e50914; /* Netflix red */
+  letter-spacing: 2px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a:focus {
+  color: #e50914;
+  outline: none;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-links a {
+  color: white;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.social-links a:hover,
+.social-links a:focus {
+  color: #e50914;
+  outline: none;
+  transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+  .nav-links {
+    display: none; /* Hide nav links on smaller screens */
+  }
+
+  .navbar {
+    justify-content: space-between;
+  }
+}
+@media (max-width: 400px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+}
+.nav-button {
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 6px 10px;
+  transition: color 0.3s ease;
+}
+
+.nav-button:hover:not(:disabled) {
+  color: #e50914;
+}
+
+.nav-button:disabled,
+.nav-button.active {
+  color: #e50914;
+  font-weight: bold;
+  cursor: default;
+  /* Optionally add underline or border bottom for active */
+  border-bottom: 2px solid #e50914;
+}
+.nav-button:focus {
+  outline: 2px solid #e50914;
+  outline-offset: 2px;
+}
