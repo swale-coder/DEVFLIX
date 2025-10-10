@@ -1,4 +1,4 @@
-name: React CI
+name: Devflix React CI/CD
 
 on:
   push:
@@ -7,23 +7,37 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
-    runs-on:  windows-latest
+  build-and-deploy:
+    runs-on: windows-latest
 
     steps:
-      - name: Checkout Repo
+      # Step 1: Checkout the repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
+      # Step 2: Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: "npm"  # Caches npm modules automatically
 
-      - name: Install Dependencies
-        run: npm install
+      # Step 3: Install dependencies safely
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
 
-      - name: Run Build
+      # Step 4: Build React app
+      - name: Build React App
         run: npm run build
 
-      - name: Run Tests
-        run: npm test
+      # Step 5: Run tests
+      - name: Run tests
+        run: npm test -- --watchAll=false
+
+      # Step 6: Deploy to Azure Web App
+      - name: Deploy to Azure
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: "<YOUR-AZURE-WEBAPP-NAME>"
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ./build
