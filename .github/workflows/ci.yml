@@ -1,4 +1,4 @@
-name: Devflix CI
+name: React CI
 
 on:
   push:
@@ -8,10 +8,10 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on:  window-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Repo
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -19,11 +19,11 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm install
 
-      - name: Run tests
-        run: npm test --if-present
-
-      - name: Build project
+      - name: Run Build
         run: npm run build
+
+      - name: Run Tests
+        run: npm test
