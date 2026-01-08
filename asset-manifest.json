@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6b0afc0a.css",
+    "main.js": "/static/js/main.11fabfa3.js",
+    "static/js/453.32d81922.chunk.js": "/static/js/453.32d81922.chunk.js",
+    "static/media/oilrefine.png": "/static/media/oilrefine.d111a386adddab40f797.png",
+    "static/media/Catalystdigital.png": "/static/media/Catalystdigital.32807275bc75482c77e7.png",
+    "index.html": "/index.html",
+    "main.6b0afc0a.css.map": "/static/css/main.6b0afc0a.css.map",
+    "main.11fabfa3.js.map": "/static/js/main.11fabfa3.js.map",
+    "453.32d81922.chunk.js.map": "/static/js/453.32d81922.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6b0afc0a.css",
+    "static/js/main.11fabfa3.js"
+  ]
+}
